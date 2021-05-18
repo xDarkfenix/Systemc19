@@ -23,5 +23,14 @@ public class Usuario {
         this.tagAdm = tagAdm;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public boolean isTagAdm() {
+        return tagAdm;
+    }
+    
+
     
 }

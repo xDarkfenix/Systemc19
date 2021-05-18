@@ -1,23 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Systemc19_telas;
 
-/**
- *
- * @author jhoni
- */
+import Systemc19_classes.Usuario;
+
 public class TelaAtendentePrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaAtendentePrincipal
-     */
+    private Usuario usuarioLogado;
+    
     public TelaAtendentePrincipal() {
         initComponents();
     }
 
+    public TelaAtendentePrincipal(Usuario usuarioLogado) {
+        
+        this.usuarioLogado = usuarioLogado;
+        initComponents();
+        
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -260,18 +260,31 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void entrarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarjButtonActionPerformed
+        //cria usuario como null para caso login seja chamada novamente
+        Usuario usuarioLogado = null;
+        
         String usuario = usuariojTextField.getText();
         String senha = new String(senhajPasswordField.getPassword());
-        DAO dao = new DAO();
+        //instancia dao para fazer a verificação dos dados
+        
         
         try{
-           Usuario usuarioLogado = dao.checarUsuario(usuario, senha);
-           if(usuarioLogado != null && usuarioLogado.isTagAdm())
+            
+           usuarioLogado = DAO.checarUsuario(usuario, senha);
+           if(usuarioLogado != null)
            {
-               //tela de adm
-           }else if (usuarioLogado != null && !usuarioLogado.isTagAdm())
+               String msgUsuario = usuarioLogado.isTagAdm()? "Adminstrador" : "Atendente";
+               
+               JOptionPane.showMessageDialog(null,"Bem vindo " + msgUsuario);
+               
+               //tela principal instanciada
+               TelaPrincipal telaPrincipal = new TelaPrincipal(usuarioLogado);
+               telaPrincipal.setVisible(true);
+               this.dispose();
+               
+           }else
            {
-               //tela atendente
+               JOptionPane.showMessageDialog(null,"Usuario invalido" ,"Erro", JOptionPane.ERROR_MESSAGE);
            }
         }catch(Exception e)
         {

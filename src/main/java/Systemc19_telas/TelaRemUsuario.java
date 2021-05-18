@@ -5,17 +5,20 @@
  */
 package Systemc19_telas;
 
+import Systemc19_classes.DAO;
+import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author jhoni
  */
-public class TelaAdmRemover extends javax.swing.JInternalFrame {
+public class TelaRemUsuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form TelaAdmRemover
      */
-    public TelaAdmRemover() {
+    public TelaRemUsuario() {
         initComponents();
     }
 
@@ -29,56 +32,48 @@ public class TelaAdmRemover extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        senhaAdmCadjPasswordField = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        campoId = new javax.swing.JTextField();
+        botaoConfirmar = new javax.swing.JButton();
+        botaoSair = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        idUserAdmCadTextField = new javax.swing.JTextField();
-        removerjButton = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        senhaAdmCadjPasswordField.setBackground(new java.awt.Color(255, 255, 255));
-        senhaAdmCadjPasswordField.setBorder(null);
-
-        jButton1.setBackground(new java.awt.Color(204, 0, 51));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SAIR");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        campoId.setBackground(new java.awt.Color(255, 255, 255));
+        campoId.setBorder(null);
+        campoId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                campoIdActionPerformed(evt);
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\icon projeto final\\excluir.png")); // NOI18N
+        botaoConfirmar.setBackground(new java.awt.Color(85, 78, 164));
+        botaoConfirmar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoConfirmar.setText("Confirmar");
+        botaoConfirmar.setBorder(null);
+        botaoConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoConfirmarActionPerformed(evt);
+            }
+        });
+
+        botaoSair.setBackground(new java.awt.Color(204, 0, 51));
+        botaoSair.setForeground(new java.awt.Color(255, 255, 255));
+        botaoSair.setText("SAIR");
+        botaoSair.setBorder(null);
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(85, 78, 164));
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(85, 78, 164));
         jLabel4.setText("REMOVER");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\icon projeto final\\carteira-de-motorista.png")); // NOI18N
-
-        idUserAdmCadTextField.setBackground(new java.awt.Color(255, 255, 255));
-        idUserAdmCadTextField.setBorder(null);
-        idUserAdmCadTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idUserAdmCadTextFieldActionPerformed(evt);
-            }
-        });
-
-        removerjButton.setBackground(new java.awt.Color(85, 78, 164));
-        removerjButton.setForeground(new java.awt.Color(255, 255, 255));
-        removerjButton.setText("REMOVER");
-        removerjButton.setBorder(null);
-        removerjButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removerjButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,23 +89,19 @@ public class TelaAdmRemover extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addGap(196, 196, 196))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(senhaAdmCadjPasswordField)
-                .addContainerGap(353, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idUserAdmCadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(93, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(removerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(157, 157, 157))
         );
         jPanel1Layout.setVerticalGroup(
@@ -122,16 +113,14 @@ public class TelaAdmRemover extends javax.swing.JInternalFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(idUserAdmCadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(senhaAdmCadjPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(removerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(botaoConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
 
@@ -149,28 +138,30 @@ public class TelaAdmRemover extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void idUserAdmCadTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idUserAdmCadTextFieldActionPerformed
+    private void campoIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idUserAdmCadTextFieldActionPerformed
+    }//GEN-LAST:event_campoIdActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
          this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botaoSairActionPerformed
 
-    private void removerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerjButtonActionPerformed
-    
-    }//GEN-LAST:event_removerjButtonActionPerformed
+    private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
+        
+        if(Integer.parseInt(campoId.getText()) != 1) {DAO.excluirUsuario(Integer.parseInt(campoId.getText()));}
+        
+        JOptionPane.showMessageDialog(null,"Usuario removido");
+    }//GEN-LAST:event_botaoConfirmarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField idUserAdmCadTextField;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botaoConfirmar;
+    private javax.swing.JButton botaoSair;
+    private javax.swing.JTextField campoId;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JButton removerjButton;
-    private javax.swing.JPasswordField senhaAdmCadjPasswordField;
     // End of variables declaration//GEN-END:variables
 }
