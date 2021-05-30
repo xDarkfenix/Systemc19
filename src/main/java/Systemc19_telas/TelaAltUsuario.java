@@ -6,6 +6,7 @@
 package Systemc19_telas;
 
 import Systemc19_classes.DAO;
+import Systemc19_classes.GerenciadorDeData;
 import javax.swing.JOptionPane;
 
 
@@ -219,13 +220,14 @@ public class TelaAltUsuario extends javax.swing.JInternalFrame {
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
         String usuario = campoUsuario.getText();
         String senha = new String(campoSenha.getPassword());
-        String id = campoId.getText();
+        String id = campoId.getText().trim();
         boolean isAdm = checkboxAdm.isSelected();
         
-        if(!usuario.equals("") && !senha.equals("") && !id.equals("") )   
+        if(GerenciadorDeData.checarSeNum(campoId.getText()) && !usuario.equals("") && !senha.equals("") && !id.equals("") )   
         {
             DAO.atualizarUsuario(Integer.parseInt(id), usuario, senha, isAdm);
             JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso");
+            this.dispose();
         }else
         {
             JOptionPane.showMessageDialog(null,"Campo Usuario/senha/ID vazio(s)" ,"Erro", JOptionPane.ERROR_MESSAGE);

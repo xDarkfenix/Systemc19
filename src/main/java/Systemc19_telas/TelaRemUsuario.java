@@ -6,6 +6,7 @@
 package Systemc19_telas;
 
 import Systemc19_classes.DAO;
+import Systemc19_classes.GerenciadorDeData;
 import javax.swing.JOptionPane;
 
 
@@ -148,9 +149,16 @@ public class TelaRemUsuario extends javax.swing.JInternalFrame {
 
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
         
-        if(Integer.parseInt(campoId.getText()) != 1) {DAO.excluirUsuario(Integer.parseInt(campoId.getText()));}
+        if(GerenciadorDeData.checarSeNum(campoId.getText()) && !campoId.getText().equals("") && Integer.parseInt(campoId.getText().trim()) != 1 )
+        {
+            DAO.excluirUsuario(Integer.parseInt(campoId.getText().trim()));
+             JOptionPane.showMessageDialog(null,"Usuario removido");
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null,"Campo id invalido" ,"Erro", JOptionPane.ERROR_MESSAGE);
+        }
         
-        JOptionPane.showMessageDialog(null,"Usuario removido");
     }//GEN-LAST:event_botaoConfirmarActionPerformed
 
 

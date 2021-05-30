@@ -6,6 +6,7 @@
 package Systemc19_telas;
 
 import Systemc19_classes.DAO;
+import Systemc19_classes.GerenciadorDeData;
 import javax.swing.JOptionPane;
 
 /**
@@ -71,7 +72,6 @@ public class TelaCadPessoa extends javax.swing.JInternalFrame {
         });
 
         campoNome.setBackground(new java.awt.Color(255, 255, 255));
-        campoNome.setForeground(new java.awt.Color(255, 255, 255));
         campoNome.setBorder(null);
         campoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +81,11 @@ public class TelaCadPessoa extends javax.swing.JInternalFrame {
 
         campoIdade.setBackground(new java.awt.Color(255, 255, 255));
         campoIdade.setBorder(null);
+        campoIdade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoIdadeActionPerformed(evt);
+            }
+        });
 
         checkboxProf.setText("Profissional da Saúde");
 
@@ -208,20 +213,40 @@ public class TelaCadPessoa extends javax.swing.JInternalFrame {
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
         String nome = campoNome.getText();
-        String idade = campoIdade.getText();
+        String idade = campoIdade.getText().trim();
         boolean tagProf = checkboxProf.isSelected();
         String endereco = campoEnde.getText();
+        int prio = 1;
         
-        if(!nome.equals("") && !idade.equals("") && !endereco.equals(""))
+        
+        
+        
+        if(!nome.equals("") && GerenciadorDeData.checarSeNum(idade)&& !endereco.equals("") && !idade.equals("") )
         {
-            DAO.cadastrarPessoa(nome,Integer.parseInt(idade), tagProf, endereco);
+                if((Integer.parseInt(idade) >= 70) && tagProf)
+            {
+                prio += 3;
+            }else if(Integer.parseInt(idade) >= 70)
+            {
+                prio +=2;
+            }else if(tagProf)
+            {
+                prio ++; 
+            }
+            DAO.cadastrarPessoa(nome,Integer.parseInt(idade), tagProf, endereco,prio);
+            JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
+            this.dispose();
         }else
         {
-            JOptionPane.showMessageDialog(null,"Campo nome/idade/endereco vazio" ,"Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Campo nome/idade/endereco vazio ou idade não numero" ,"Erro", JOptionPane.ERROR_MESSAGE);
         }
         
         
     }//GEN-LAST:event_botaoCadastrarActionPerformed
+
+    private void campoIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIdadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoIdadeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

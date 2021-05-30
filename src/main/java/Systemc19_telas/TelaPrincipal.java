@@ -50,6 +50,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         flCadAdmjMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         grGerarRelatoriosAdmMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        menuAtendente = new javax.swing.JMenu();
+        menufila = new javax.swing.JMenu();
+        itemFilaPrimeira = new javax.swing.JMenuItem();
+        itemFilaSegunda = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
         itemDeslogar = new javax.swing.JMenuItem();
 
@@ -154,7 +159,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menuAdm.add(grGerarRelatoriosAdmMenuItem);
 
+        jMenuItem1.setText("Pessoas Vacinadas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuAdm.add(jMenuItem1);
+
         barraMenu.add(menuAdm);
+
+        menuAtendente.setText("Atendente");
+
+        menufila.setText("Fila de Vacinação");
+
+        itemFilaPrimeira.setText("Primeira dose");
+        itemFilaPrimeira.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemFilaPrimeiraActionPerformed(evt);
+            }
+        });
+        menufila.add(itemFilaPrimeira);
+
+        itemFilaSegunda.setText("Segunda dose");
+        itemFilaSegunda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemFilaSegundaActionPerformed(evt);
+            }
+        });
+        menufila.add(itemFilaSegunda);
+
+        menuAtendente.add(menufila);
+
+        barraMenu.add(menuAtendente);
 
         menuSair.setText("Sair");
 
@@ -245,6 +282,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuAdmStateChanged
 
+    private void itemFilaPrimeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFilaPrimeiraActionPerformed
+        TelaFilaDeVacinacao telaVacinacao = new TelaFilaDeVacinacao(false);
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        telaVacinacao.setLocation(this.getWidth()/2-telaVacinacao.getWidth()/2, 0);
+        jDesktopPane1.add(telaVacinacao);
+        telaVacinacao.setVisible(true);
+    }//GEN-LAST:event_itemFilaPrimeiraActionPerformed
+
+    private void itemFilaSegundaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemFilaSegundaActionPerformed
+        TelaFilaDeVacinacao telaVacinacao = new TelaFilaDeVacinacao(true);
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        telaVacinacao.setLocation(this.getWidth()/2-telaVacinacao.getWidth()/2, 0);
+        jDesktopPane1.add(telaVacinacao);
+        telaVacinacao.setVisible(true);
+    }//GEN-LAST:event_itemFilaSegundaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaMostrarTbPessoasVacinadas telaPessoasVac = new TelaMostrarTbPessoasVacinadas();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        telaPessoasVac.setLocation(this.getWidth()/2-telaPessoasVac.getWidth()/2, 0);
+        jDesktopPane1.add(telaPessoasVac);
+        telaPessoasVac.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,13 +321,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem flCadAdmjMenuItem;
     private javax.swing.JMenuItem grGerarRelatoriosAdmMenuItem;
     private javax.swing.JMenuItem itemDeslogar;
+    private javax.swing.JMenuItem itemFilaPrimeira;
+    private javax.swing.JMenuItem itemFilaSegunda;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenu menuAdm;
+    private javax.swing.JMenu menuAtendente;
     private javax.swing.JMenu menuGerenciarPessoas;
     private javax.swing.JMenu menuGerenciarUsuarios;
     private javax.swing.JMenu menuSair;
+    private javax.swing.JMenu menufila;
     private javax.swing.JMenuItem remUsuarioItem;
     // End of variables declaration//GEN-END:variables
 

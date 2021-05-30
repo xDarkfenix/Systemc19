@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 public class ConnectionFactory {
+    
     private static final String USUARIO = "root";
     private static final String SENHA = "1524";
     private static final String HOST = "localhost";
